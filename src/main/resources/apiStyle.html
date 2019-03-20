@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>  
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table.api-handler {
+                border: 0;
+                border-spacing: 0;
+                padding: 0;
+                background-color: gainsboro;
+                width: 800px;
+                border-width: 1px;
+                border-color: black;
+            }
+            td.api-method {
+                
+            }
+            td.api-path {
+                border: 0;
+                border-spacing: 0;
+            }
+            .param-header {
+                text-align: left;
+                width: 150px;
+            }
+            .api-description-header {
+                font-weight: bold;
+            }
+            .param-detail {
+            }
+        </style>
+    </head>
+    <body>
+
+            
+        
+
+        <table class="api-handler">
+            <tr ng-repeat="{{x in endpoints}}">
+                <td colspan="1" class="api-method">{{x.path}}</td>
+                <td colspan="3" class="api-path">/api/api-doc</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description"></td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr></table><BR><BR><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/derivedgame/draw/{derivedGameDrawId}/</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Get information regarding specific draw.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">derivedGameDrawId</td><td class="param-detail">The id of the derived game draw.</td><td class="param-detail">path</td><td class="param-detail">long</td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/operatorgames/{operatorId}/{brandId}/{siteId}</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Get a list of games for operator filtered by brand, site</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">operatorId</td><td class="param-detail">The operator Id.</td><td class="param-detail">path</td><td class="param-detail">long</td><tr><td class="param-detail">brandId</td><td class="param-detail">The brand Id</td><td class="param-detail">path</td><td class="param-detail">int</td><tr><td class="param-detail">siteId</td><td class="param-detail">The site Id</td><td class="param-detail">path</td><td class="param-detail">int</td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">POST</td>
+                <td colspan="3" class="api-path">/games/gameresult/{physicalGameId}/setresult</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description"></td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">physicalGameId</td><td class="param-detail"></td><td class="param-detail">path</td><td class="param-detail">long</td><tr><td class="param-detail">body</td><td class="param-detail"></td><td class="param-detail">body</td><td class="param-detail"><strong>DrawResult</strong> : {<BR>
+                    <pre>   <strong>physicalGameId</strong>:long</pre>
+                    <pre>   <strong>physicalDrawId</strong>:long</pre>
+                    <pre>   <strong>drawDate</strong>:LocalDateTime</pre>
+                    <pre>   <strong>mainDraw</strong>:(array)Integer</pre>
+                    <pre>   <strong>extraDraw</strong>:(array)Integer</pre>
+                    }<BR><BR>
+
+                </td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">POST</td>
+                <td colspan="3" class="api-path">/games/refresh/</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">refresh the internal cache.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/derivedgame/{derivedGameId}</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Get a specific game.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">derivedGameId</td><td class="param-detail">The id of the derived game.</td><td class="param-detail">path</td><td class="param-detail">long</td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/derivedgame/{derivedGameId}/getnextdraw</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Get draw information for specific game.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">derivedGameId</td><td class="param-detail">The id of the derived game.</td><td class="param-detail">path</td><td class="param-detail">long</td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/derivedgame/payout/setpayout/{derivedGameDrawId}</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Set the payout table for a specific draw.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">derivedGameDrawId</td><td class="param-detail">The id of the derived game draw.</td><td class="param-detail">path</td><td class="param-detail">long</td><tr><td class="param-detail">body</td><td class="param-detail">The draw payout structure.</td><td class="param-detail">body</td><td class="param-detail"><strong>List</strong> : {<BR>
+                    }<BR><BR>
+
+                </td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/derivedgame/{derivedGameId}/wagerinfo/</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Get the wagering info for a specific game.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">derivedGameId</td><td class="param-detail">The id of the game.</td><td class="param-detail">path</td><td class="param-detail">long</td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/feed/dofeed</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description"></td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">POST</td>
+                <td colspan="3" class="api-path">/games/derivedgame/setpayout/</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Set the payout of a specific tier.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr><tr><td class="param-detail">body</td><td class="param-detail">Payout structure</td><td class="param-detail">body</td><td class="param-detail"><strong>DrawPayout</strong> : {<BR>
+                    <pre>   <strong>id</strong>:long</pre>
+                    <pre>   <strong>gameTierId</strong>:long</pre>
+                    <pre>   <strong>tierNo</strong>:long</pre>
+                    <pre>   <strong>derivedDrawId</strong>:long</pre>
+                    <pre>   <strong>payoutValue</strong>:BigDecimal</pre>
+                    <pre>   <strong>winnerCount</strong>:int</pre>
+                    <pre>   <strong>isInsured</strong>:boolean</pre>
+                    <pre>   <strong>createdDate</strong>:LocalDateTime</pre>
+                    }<BR><BR>
+
+                </td></table><table class="api-handler">
+            <tr>
+                <td colspan="1" class="api-method">GET</td>
+                <td colspan="3" class="api-path">/games/draws/opendraws/</td>
+            </tr><tr><td colspan="1" class="api-description-header">Description:</td><tr><td class="api-description">Get a list of open draws.</td>
+            <tr><th class="param-header">parameter</th>
+                <th class="param-header">description</th>
+                <th class="param-header">parameter type</th>
+                <th class="param-header">data type</th
+                ></tr></table>        
+
+    </body>
+</html>
