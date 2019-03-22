@@ -68,11 +68,14 @@ public class RestControllerServlet extends HttpServlet {
         doCall("options", req, resp);
     }
 
+
     private void doCall(String verb, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        long startTime = System.currentTimeMillis();
         try {
 //            System.out.println("Handling request for " + req.getPathInfo());
 
-            LOGGER.info("Handling request for " + req.getPathInfo());
+            LOGGER.debug("Handling request for " + req.getPathInfo());
             ResponseEntity responseEntity = null;
             
             if (serverActivityMonitor != null) {
@@ -124,6 +127,7 @@ public class RestControllerServlet extends HttpServlet {
                 } else {
                     LOGGER.debug("RESPONSE BODY WAS NULL");
                 }
+
                 resp.setStatus(responseEntity.getStatus().value());
                 resp.setContentType(responseEntity.getContentType());
                 resp.getWriter().print(response);
@@ -174,6 +178,8 @@ public class RestControllerServlet extends HttpServlet {
             resp.getWriter().print("Unhandled type " + t.getClass().getSimpleName() + " with message " + t.getMessage());
             resp.getWriter().flush();
         } finally {
+            long duration = System.currentTimeMillis() - startTime;
+            LOGGER.info("[" + req.getMethod() + "]" + "  -  " + req.getPathInfo() + " --> " + resp.getStatus() + " (" + duration + " ms)");
             if (serverActivityMonitor != null) {
                 serverActivityMonitor.endCall(req);
             }
